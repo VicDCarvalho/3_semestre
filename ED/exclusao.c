@@ -8,24 +8,29 @@ typedef struct lista {
 } TLista;
 
 TLista* exclui(TLista* li, int valor) {
-    TLista *L=li, *pre=NULL;
+    TLista *L = li;
+    TLista *pre = NULL;
 
-    if(L!=NULL){
-        while(L != NULL && L->info != valor){
+    while (L != NULL) {
+        if (L->info == valor) {
+
+            if (pre == NULL) {
+                li = L->prox;
+                free(L);
+                L = li;
+            } else {
+                pre->prox = L->prox;
+                free(L);
+                L = pre->prox;
+            }
+
+        } else {
             pre = L;
             L = L->prox;
         }
+    }
 
-        if(L!=NULL && pre!=NULL){
-            pre->prox = L->prox;
-        }
-
-        if(L!= NULL && pre == NULL)
-            li = L->prox;
-    }else
-        printf("Lista Vazia");
-
-    return(li);
+    return li;
 }
 
 void imprime_lista(TLista *li) {
