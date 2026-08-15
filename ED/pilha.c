@@ -37,24 +37,6 @@ tlista *push(tlista *L, int n){
 
 }
 
-tlista* insere_fim (tlista* li, int i) {
-    tlista* novo = (tlista*) malloc(sizeof(tlista));
-    novo->info = i;
-    novo->prox = NULL;
-    tlista *p = li;
-    tlista *q = li;
-    while (p != NULL) {
-        /* encontra o ultimo elemento */
-        q = p;
-        p = p->prox;
-    }
-    if (q != NULL) /* se a lista original não estiver vazia */
-        q->prox = novo;
-    else
-        li = novo;
-    return li;
-}
-
 void imprime_lista(tlista *li) {
     tlista* p;
     for (p = li; p != NULL; p = p->prox)
