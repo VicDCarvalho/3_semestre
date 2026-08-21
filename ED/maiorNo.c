@@ -13,16 +13,19 @@ typedef struct sNoA {
 } TNoA;
 
 TNoA *maior(TNoA *a) {
-    TNoA *max=a, *aux=a;
-    if(aux!=NULL){
-        if(aux->esq !=NULL && aux->esq->info > max->info)
-            max = aux->esq;
-        if(aux->dir != NULL && aux->dir->info > max->info)
-            max = aux->dir;
-        maior(aux->esq);
-        maior(aux->dir);
+    TNoA* maiorNo=a, *maiorEsq, *maiorDir;
+
+    if(maiorNo!=NULL){
+        maiorEsq = maior(maiorNo->esq);
+        maiorDir = maior(maiorNo->dir);
+
+        if(maiorEsq!=NULL && maiorEsq->info > maiorNo->info)
+            maiorNo = maiorEsq;
+        if(maiorDir!=NULL && maiorDir->info > maiorNo->info)
+            maiorNo = maiorDir;
     }
-    return max;
+
+    return maiorNo;
 }
 
 TNoA *inicializa(void) {
