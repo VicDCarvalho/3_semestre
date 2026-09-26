@@ -125,7 +125,7 @@ void join(char *nome_arq_dept, char *nome_arq_funcionarios, char *nome_arq_join)
                 fscanf(arqF, "%d;%d;%s", &codDep, &sala, nomeDep);
 
                 if(codDep == cod_dep){
-                    fprintf(arqJoin, "%d;%d;%s;%d;%s", &codDep, &sala, nomeDep, &codFun, nome);
+                    fprintf(arqJoin, "%d;%d;%s;%d;%s", codDep, sala, nomeDep, &odFun, nome);
                     break;
                 }
             }
